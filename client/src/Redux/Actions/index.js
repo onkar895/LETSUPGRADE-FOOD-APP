@@ -4,7 +4,7 @@ const URL= 'http://localhost:8000';
 
         export const addusers = async(data)=>{
             try {
-                return await axios.post(`${URL}/add`,data);
+                return await axios.post(`${URL}/addUser`,data);
                 
             } catch (error) {
                 console.log('error while calling the Add user API')
@@ -14,7 +14,7 @@ const URL= 'http://localhost:8000';
         export const getUser =async(data)=>{
             
             try {
-                return await axios.post(`${URL}/login`, data)
+                return await axios.post(`${URL}/userLogin`, data)
 
                 
             } catch (error) {
@@ -26,7 +26,7 @@ const URL= 'http://localhost:8000';
         export const addrestaurant = async(data) => {
             
             try { 
-                return await axios.post(`${URL}/addrest`,data);
+                return await axios.post(`${URL}/addrestaurant`,data);
                 
             } catch (error) {
                 console.log('error while calling the add restaurant api')
@@ -55,7 +55,7 @@ const URL= 'http://localhost:8000';
             
             
               try {
-                   return await axios.post(`${URL}/upload/addproduct/${userId}`,{name,price,image,description,quantity,address,landmark,categories,origin})
+                   return await axios.post(`${URL}/createProduct/${userId}`,{name,price,image,description,quantity,address,landmark,categories,origin})
               } catch (error) {
                 console.log('error while calling the add dish api',error)
               }

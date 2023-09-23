@@ -12,10 +12,6 @@ const initialState ={
     order:[],
     restOrder:[],
     productDetail:[]
-    
-
-
-
 }
 export const GetAllProducts = createAsyncThunk('restaurants/GetAllProducts', async() => {
 
@@ -94,7 +90,7 @@ export const clearCart = createAsyncThunk('/clearcart',async(userId)=>{
 //for getting the orders at customer side
 export const getOrder = createAsyncThunk('/Order',async(userId)=>{
     try {
-        const {data} =await axios.get(`${URL}/getOrder/${userId}`)
+        const {data} =await axios.get(`${URL}/userOrder/${userId}`)
         console.log(data)
         return data;
         
