@@ -12,7 +12,7 @@ import {isValidObjectId} from "mongoose"
  const key_secret=  'hi2b7sYP0zMG0rPxkPPpPYaC';
 
 
-export const addProducttoDb = async (req, res) => {
+export const addProduct = async (req, res) => {
     try {
         const { userId } = req.params;
         const { name, price, description, image, quantity } = req.body;
@@ -76,7 +76,7 @@ export const ShowAll = async(req,res) =>{
   
 
 //shows the particular restaurant to the user
-export const Getrest = async(req,res)=>{
+export const GetRestaurant = async(req,res)=>{
      
     const {id} = req.params;
     
@@ -98,7 +98,7 @@ export const Getrest = async(req,res)=>{
 }
 
 
-export const AddFoods = async(req,res)=> {
+export const AddFood = async(req,res)=> {
 
     try {
         const {productId,productName,productQuantity,productPrice,productImage,userId,restroId} =req.body
@@ -248,7 +248,7 @@ export const deleteProduct = async(req,res)=>{
     }
 }
 
-export const ShowCartProducts = async(req,res)=> {
+export const getCartProducts = async(req,res)=> {
     try {
         const {userId}= req.params
         const user = await User.findById(userId)
@@ -266,7 +266,7 @@ export const ShowCartProducts = async(req,res)=> {
     }
 }
 
-export const RemoveProduct =async(req,res) =>{
+export const removeProduct =async(req,res) =>{
     
          const  {productId,userId} = req.body
         
@@ -296,7 +296,7 @@ export const RemoveProduct =async(req,res) =>{
     }
 }
 
-export const orderPlacement = async(req,res)=>{
+export const PlaceOrder = async(req,res)=>{
     try {
         const {userId}= req.params
         const user = await User.findById(userId)
@@ -335,9 +335,8 @@ export const orderPlacement = async(req,res)=>{
         res.json({msg:'error while calling the order placement API',error})
     }
 }
-export const verify =async(req,res)=> {
-   
 
+export const verify =async(req,res)=> {
         try {
             let body = req.body.razorpay_order_id + "|" + req.body.razorpay_payment_id;
     
@@ -356,7 +355,7 @@ export const verify =async(req,res)=> {
         }
     }
     
-    export const oldorder = async(req,res)=> {
+    export const pastOrder = async(req,res)=> {
        
         const {userId,allproducts,total,orderId} = req.body
         
@@ -431,10 +430,7 @@ export const verify =async(req,res)=> {
     }
 
 
-
-    
-//for getting the orders of  restaurant  
-    export const restOrders = async (req, res) => {
+    export const restaurantOrders = async (req, res) => {
 
         const {restId}= req.params
         

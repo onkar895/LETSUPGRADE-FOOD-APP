@@ -1,38 +1,30 @@
-import { Router } from "express";
-import { addUser,userlogin,addpartner,loginPartner,verifyUserlogin} from "../Controllers/userControllers.js";
-import { addProducttoDb,ShowAll,Getrest,AddFoods,Getproducts,getProductDetails,
-         deleteProduct,ShowCartProducts,RemoveProduct,orderPlacement, 
-         verify,oldorder,emptyCart,showpastorder,restOrders,updateproduct} from "../Controllers/productController.js";
+import { Router } from 'express'
+import { UserSignUp, loginUser, addRestaurant, loginRestaurant, loginVerify } from '../Controllers/userControllers.js'
+import { addProduct, ShowAll, GetRestaurant, AddFood, Getproducts, getProductDetails, deleteProduct, getCartProducts, removeProduct, PlaceOrder, verify, pastOrder, emptyCart, showpastorder, restaurantOrders, updateproduct } from '../Controllers/productController.js'
 
- const router = Router();
+const router = Router()
 
- //user side routes:
+router.post('/addUser', UserSignUp)
+router.post('/userLogin', loginUser)
+router.post('/loginrestaurant', loginRestaurant)
+router.get('/All/:id', GetRestaurant)
+router.post('/cart', AddFood)
+router.get('/verify', loginVerify)
+router.get('/All', ShowAll)
+router.get('/cart/:userId', getCartProducts)
+router.put('/delete', removeProduct)
+router.post('/placeOrder/:userId', PlaceOrder)
+router.put('/clearCart/:userId', emptyCart)
+router.post('/orders', pastOrder)
+router.get('/userOrder/:userId', showpastorder)
 
-router.post('/add', addUser)
-router.post('/login',userlogin)
-router.post('/cart',AddFoods)
-router.get('/verify',verifyUserlogin)
-router.get('/All',ShowAll)
-router.get('/All/:id',Getrest)
-router.get('/cart/:userId',ShowCartProducts)
-router.put('/delete',RemoveProduct)
-router.post('/placeOrder/:userId',orderPlacement)
-router.put('/clearCart/:userId',emptyCart)
-router.post('/orders',oldorder)
-router.get('/getOrder/:userId',showpastorder)
-
-//restaurant routes
-
-router.post('/addrest',addpartner)
-router.post('/loginrestaurant',loginPartner)
-router.post('/upload/addproduct/:userId',addProducttoDb)
-router.get('/ShowAll/:id',Getproducts)
-router.put('/deleteProduct/:productId',deleteProduct)
-router.get('/editproduct/:productId/:id',getProductDetails)
-router.post('/edit/:id/:productId',updateproduct)
-router.post('/payment/verify',verify)
-router.get('/getrestOrder/:restId',restOrders)
-
+router.post('/addrestaurant', addRestaurant)
+router.post('/createProduct/:userId', addProduct)
+router.get('/ShowAll/:id', Getproducts)
+router.put('/deleteProduct/:productId', deleteProduct)
+router.get('/editproduct/:productId/:id', getProductDetails)
+router.post('/edit/:id/:productId', updateproduct)
+router.post('/payment/verify', verify)
+router.get('/getrestOrder/:restId', restaurantOrders)
 
 export default router
-

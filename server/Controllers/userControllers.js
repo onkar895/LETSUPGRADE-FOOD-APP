@@ -14,7 +14,7 @@ import Partner from '../Schema/partnerSchema.js'
          const SECRET_KEY='thisismysecretkey';
 
 
-export const addUser = async(req,res) => {
+export const UserSignUp = async(req,res) => {
         
     try {
         const {name, email, password,image} = req.body;
@@ -41,7 +41,7 @@ export const addUser = async(req,res) => {
     }
 }
 
-export const userlogin =async(req,res) => {
+export const loginUser =async(req,res) => {
     try {
         const {email,password} = req.body;
     const user = await User.findOne({email})
@@ -86,7 +86,7 @@ export const userlogin =async(req,res) => {
 }
 
 
-export const addpartner = async(req, res) => {
+export const addRestaurant = async(req, res) => {
     try {
         const { name, email,image, password,landmark,address,categories,origin } = req.body;
         console.log(req.body);
@@ -115,7 +115,7 @@ export const addpartner = async(req, res) => {
 };
 
 
-export const loginPartner =async(req,res)=>{
+export const loginRestaurant =async(req,res)=>{
    
    
     try {
@@ -153,7 +153,7 @@ export const loginPartner =async(req,res)=>{
     }
 }
 
-export const verifyUserlogin =async(req,res)=>{
+export const loginVerify =async(req,res)=>{
     try {
 
         await res.json({message: "Verified User"})
@@ -162,6 +162,7 @@ export const verifyUserlogin =async(req,res)=>{
         res.json("error while calling the Verify user details api")
     }
 }
+
 export const verify =async(req,res,next) => {
 
     try {
