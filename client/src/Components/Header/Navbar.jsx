@@ -2,11 +2,11 @@
 import { Typography, Button, Box, styled } from "@mui/material"
 import FoodVillaLogo from '../../assets/FoodVillaLogo.png'
 import SearchIcon from '@mui/icons-material/Search';
-import LocalOfferOutlinedIcon from '@mui/icons-material/LocalOfferOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import ShoppingBasketOutlinedIcon from '@mui/icons-material/ShoppingBasketOutlined';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import StorefrontIcon from '@mui/icons-material/Storefront';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import RestaurantOutlinedIcon from '@mui/icons-material/RestaurantOutlined';
 import { Link, useNavigate } from "react-router-dom";
 import FoodBankOutlinedIcon from '@mui/icons-material/FoodBankOutlined';
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
@@ -54,6 +54,7 @@ const SearchContainer = styled(Box)((theme) => ({
     display: 'flex',
     alignItems: 'center',
     borderRadius: '5px',
+    marginRight: '10rem',
 
     "& > div > input": {
         fontFamily: "Trebuchet MS",
@@ -179,8 +180,8 @@ export const Navbar = () => {
                         : (!partner || account)
                             ?
                             <Link to={"/RestSignup"}>
-                                <StorefrontIcon sx={{ color: 'white', ":hover": { color: 'orange' }, }} />&nbsp;&nbsp;
-                                <Typography sx={{ fontFamily: "Trebuchet MS", fontWeight: 'bold', ":hover": { color: 'orange' }, color: 'white' }}>Partner</Typography>
+                                <RestaurantOutlinedIcon sx={{ color: 'white', ":hover": { color: 'orange' }, }} />&nbsp;&nbsp;
+                                <Typography sx={{ fontFamily: "Trebuchet MS", fontWeight: 'bold', ":hover": { color: 'orange' }, color: 'white' }}>Restaurant</Typography>
                             </Link>
                             :
                             <Link to={'/PreviousOrder'} style={{ display: 'none' }}>
@@ -198,10 +199,10 @@ export const Navbar = () => {
                     </Link>
                     :
                     <Link style={{ display: 'flex', textDecoration: 'none', color: 'white', }}>
-                        <LocalOfferOutlinedIcon sx={{ ":hover": { color: 'orange' } }} />
+                        <InfoOutlinedIcon sx={{ ":hover": { color: 'orange' } }} />
                         &nbsp;&nbsp;
                         <Typography sx={{ fontFamily: "Trebuchet MS", fontWeight: 'bold', ":hover": { color: 'orange' } }}>
-                            Offers
+                            About
                         </Typography>
                     </Link>
                 }

@@ -10,20 +10,7 @@
     box-sizing: border-box;
     overflow-x: hidden;
 }
-.carousel-container {
-    max-width: 100%;
-    display: flex;
-    justify-content: center;
-    margin: 1rem 3rem;
-}
-.carouselItem {
-    padding: 0.1rem 1.2rem 1rem 1.2rem;
-}
 
-.restProfile {
-    width: 100vw;
-    padding: 6rem 3rem;
-}
 
 .FoodContainer {
     overflow-y: hidden;

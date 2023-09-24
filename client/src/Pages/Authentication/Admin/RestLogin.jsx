@@ -5,19 +5,17 @@ import LockIcon from '@mui/icons-material/Lock';
 import { FormContainer, FormInput, ButtonContainer } from "../styles"
 import Navbar from "../../../Components/Header/Navbar";
 import { Link, useNavigate } from 'react-router-dom'
-import { useState } from "react";
-import { LoginUser } from "../../../Redux/Actions";
 import { toast } from 'react-toastify'
 import { useGlobalContext } from "../../../Context/Context";
 import { useCookies } from "react-cookie";
+import { useState } from "react";
+import { LoginUser } from "../../../Redux/Actions";
 
 
 const initialValue = {
     email: '',
     password: '',
 }
-
-
 
 export const Restlogin = () => {
 
@@ -62,15 +60,14 @@ export const Restlogin = () => {
         <>
             <Navbar />
             <FormContainer>
-
                 <div style={{ marginTop: '7%' }}>
-                    <Typography variant="h2">Partner Login</Typography>
-                    <form>
-                        <FormInput><PersonOutlineIcon /><TextField onChange={(e) => handleChange(e)} style={{ width: "50%" }} label="email" variant="outlined" name="email" type="email" /></FormInput>
-                        <FormInput><LockIcon /><TextField onChange={(e) => handleChange(e)} style={{ width: "50%" }} label="Password" variant="outlined" name="password" type="password" /></FormInput>
+                    <Typography variant="h2" sx={{ fontFamily: "Trebuchet MS", }}>User Login</Typography>
+                    <form style={{ boxShadow: '0 0 6px 0 grey', width: '30%', height: '50vh', margin: '20px auto', display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', padding: '2rem 0', borderRadius: '10px', }}>
+                        <FormInput><PersonOutlineIcon /><TextField onChange={(e) => handleChange(e)} style={{ width: "25%", borderRadius: '6px' }} label="email" variant="filled" color='warning' name="email" type="email" /></FormInput>
+                        <FormInput><LockIcon /><TextField onChange={(e) => handleChange(e)} style={{ width: "25%", borderRadius: '6px' }} label="Password" variant="filled" color='warning' name="password" type="password" /></FormInput>
                     </form>
-                    <ButtonContainer><Button onClick={submitLogin} variant='contained' size="large" style={{ width: "15rem" }}>Login</Button></ButtonContainer>
-                    <Link style={{ textDecoration: 'none', color: '#1976d2' }} to={'/RestSignUp'}>Become a Partner?&nbsp;&nbsp;Register Here</Link>
+                    <ButtonContainer><Button onClick={submitLogin} variant='contained' size="large" color='warning' style={{ width: "24rem", marginRight: '15px' }}><Typography sx={{ textTransform: 'capitalize' }}>Login</Typography> </Button></ButtonContainer>
+                    <Link style={{ textDecoration: 'none', color: 'grey' }} to={'/RestSignUp'}><Typography sx={{ color: 'grey', ":hover": { color: 'black' } }}>Not a User?&nbsp;&nbsp;Register Here</Typography></Link>
                 </div>
 
 
