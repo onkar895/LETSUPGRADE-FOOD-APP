@@ -9,24 +9,38 @@ import StarsIcon from '@mui/icons-material/Stars';
 
 const FoodContainer = styled(Box)(({ theme }) => ({
   display: 'flex',
-  justifyContent: 'space-between',
+  justifyContent: 'center',
   flexDirection: 'column',
-  padding: '1rem 0.2rem',
-  width: '100%',
+  width: '80%',
+  margin: '1rem 2.5rem',
   cursor: 'pointer',
   textAlign: 'left',
-  '& >div>img': {
-    borderRadius: '1.5rem',
+  padding: '10px',
+  boxShadow: '0 0 6px 0 grey',
+  borderRadius: '10px',
+
+  ":hover": {
+    filter: 'dropShadow(3px 3px 3px black)',
+    cursor: 'pointer',
+    transform: 'scale(0.92)',
+    transition: '0.6s',
+  },
+
+  '& > div > img': {
+    borderRadius: '10px',
     width: '100%',
     height: '9rem',
-    objectFit: 'cover'
+    objectFit: 'cover',
+    filter: 'dropShadow(3px 3px 3px black)'
   },
+
   '& span': {
-    color: '#93959f',
+    fontFamily: "Trebuchet MS",
+    color: 'black',
     fontSize: '16px',
     alignItems: 'center'
 
-  }
+  },
 
 }))
 
@@ -58,7 +72,7 @@ export const FoodCard = () => {
               <Typography fontSize={"18px"} fontWeight={550} color={"#02060CBF"}>{item.name}</Typography>
               <Box style={{ alignItems: 'center', display: 'flex' }}>
                 <StarsIcon style={{ color: "green" }} />&nbsp;&nbsp;
-                <Typography>4.4</Typography>
+                <Typography sx={{ fontFamily: "Trebuchet MS", }}>4.4</Typography>
               </Box>
               <span>{item.categories}</span>
               <span>{item.origin}</span>

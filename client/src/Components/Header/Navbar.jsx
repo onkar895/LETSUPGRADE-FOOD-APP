@@ -4,21 +4,20 @@ import FoodVillaLogo from '../../assets/FoodVillaLogo.png'
 import SearchIcon from '@mui/icons-material/Search';
 import LocalOfferOutlinedIcon from '@mui/icons-material/LocalOfferOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
-import RestaurantRoundedIcon from '@mui/icons-material/RestaurantRounded';
-import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import ShoppingBasketOutlinedIcon from '@mui/icons-material/ShoppingBasketOutlined';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import StorefrontIcon from '@mui/icons-material/Storefront';
 import { Link, useNavigate } from "react-router-dom";
 import FoodBankOutlinedIcon from '@mui/icons-material/FoodBankOutlined';
-import { useGlobalContext } from "../../Context/Context";
-import Profile from "./Profile";
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 import { useCookies } from "react-cookie";
 import { toast } from 'react-toastify'
 import HomeMaxIcon from '@mui/icons-material/HomeMax';
 import AddIcon from '@mui/icons-material/Add';
+import { useGlobalContext } from "../../Context/Context";
+import Profile from "./User";
+
+
 import FastfoodIcon from '@mui/icons-material/Fastfood';
 
 
@@ -174,7 +173,7 @@ export const Navbar = () => {
                     account
                         ?
                         <Link to={'/PreviousOrder'}>
-                            <FastfoodIcon sx={{ color: 'white', ":hover": { color: 'orange' }, }} />&nbsp;&nbsp;
+                            <FoodBankOutlinedIcon sx={{ color: 'white', ":hover": { color: 'orange' }, }} />&nbsp;&nbsp;
                             <Typography sx={{ fontFamily: "Trebuchet MS", fontWeight: 'bold', ":hover": { color: 'orange' }, color: 'white', }}>Orders</Typography>
                         </Link>
                         : (!partner || account)
@@ -212,7 +211,7 @@ export const Navbar = () => {
                 {
                     account ?
                         <Link style={{ display: 'flex', textDecoration: 'none', color: 'white' }} to={'/Cart'}>
-                            <AddShoppingCartIcon sx={{ ":hover": { color: 'orange' } }} />&nbsp;&nbsp;
+                            <ShoppingBasketOutlinedIcon sx={{ ":hover": { color: 'orange' } }} />&nbsp;&nbsp;
                             <Typography sx={{ fontFamily: "Trebuchet MS", fontWeight: 'bold', ":hover": { color: 'orange' } }}>
                                 Cart
                             </Typography>
@@ -225,7 +224,7 @@ export const Navbar = () => {
                             </Link>
                             :
                             <Link style={{ display: 'flex', textDecoration: 'none', color: 'white' }} to={'/Cart'}>
-                                <ShoppingCartRoundedIcon sx={{ ":hover": { color: 'orange' } }} />&nbsp;&nbsp;
+                                <ShoppingBasketOutlinedIcon sx={{ ":hover": { color: 'orange' } }} />&nbsp;&nbsp;
                                 <Typography sx={{ fontFamily: "Trebuchet MS", fontWeight: 'bold', ":hover": { color: 'orange' } }}>Cart</Typography>
                             </Link>
                         )
@@ -251,12 +250,18 @@ export const Navbar = () => {
             <Logout>
                 {
                     (account || partner) ?
-                        <Button onClick={handleLogout} to={'/'}>
-                            {<PowerSettingsNewIcon />}
+                        <Button variant="outlined" color="error" size="small" onClick={handleLogout} to={'/'} sx={{ ":hover": { color: 'white', background: 'red', } }}>
+                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                                <Typography sx={{ textTransform: "capitalize", fontWeight: 'bold', fontFamily: "Trebuchet MS", }}>LogOut</Typography>
+                                {<PowerSettingsNewIcon />}
+                            </div>
                         </Button>
                         :
-                        <Button style={{ display: 'none' }}>
-                            {<PowerSettingsNewIcon />}
+                        <Button variant="outlined" color="error" size="small" sx={{ display: 'none' }}>
+                            <div>
+                                <Typography>LogOut</Typography>
+                                {<PowerSettingsNewIcon />}
+                            </div>
                         </Button>}
             </Logout>
         </NavbarContainer>

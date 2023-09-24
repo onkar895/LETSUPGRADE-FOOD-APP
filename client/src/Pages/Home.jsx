@@ -1,13 +1,13 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react"
-import Navbar from "../Components/Navbar/Navbar"
+import Navbar from "../Components/Header/Navbar"
 import HomeImage from "../Components/HomePage/HomeImage"
 import { Main } from "./styles"
 import Footer from "../Components/Footer/Footer"
 import { verifyUser } from "../Redux/Actions"
 import { useNavigate } from "react-router-dom"
 import { useCookies } from "react-cookie"
-import FoodCard from "../Components/HomePage/FoodCard"
+import RestoCard from "../Components/HomePage/RestoCard"
 import { toast } from 'react-toastify'
 
 
@@ -42,7 +42,7 @@ export const Home = () => {
 
             <Navbar />
             <HomeImage />
-            <FoodCard />
+            <RestoCard />
             <Footer />
 
         </Main>
