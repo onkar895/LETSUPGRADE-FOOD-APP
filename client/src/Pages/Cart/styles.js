@@ -9,9 +9,9 @@ export const Navbar = styled(Box)(({theme}) => ({
   overflow: 'hidden',
   justifyContent: 'space-between',
   alignItems: 'center',
-  backgroundColor: 'white',
-  boxShadow: '3px 3px 6px 3px #888888',
+  backgroundColor: 'black',
   height: '4rem',
+
   '& div': {
     display: 'flex',
     justifyContent: 'space-between',
@@ -101,7 +101,8 @@ export const CartContainer = styled(Box)(({theme}) => ({
   width: '100%',
   height: '100%',
   display: 'flex',
-  flexDirection: 'row',
+  gap: '1rem',
+  flexDirection: 'column',
   justifyContent: 'space-between',
   padding: '1rem 3rem',
   alignItems: 'center',
@@ -120,7 +121,9 @@ export const LeftSide = styled(Box)(({theme}) => ({
   backgroundColor: 'white',
   padding: '1rem 1rem',
   marginTop: '0.5rem',
-  boxShadow: '2px 2px 5px 2px #888899',
+  border: '1px solid orange',
+  borderRadius: '5px',
+
   '& >div': {
     alignItems: 'center',
     display: 'flex',
@@ -133,14 +136,16 @@ export const LeftSide = styled(Box)(({theme}) => ({
   }
 
 }))
-export const RightSide = styled(Box)(({theme}) => ({
+export const SummaryContainer = styled(Box)(({theme}) => ({
   backgroundColor: 'white',
-  width: '100%%',
+  width: '44vw',
   alignItems: 'center',
   justifyContent: 'center',
-  boxShadow: '2px 2px 5px 2px #888899',
-
+  border: '1px solid orange',
+  borderRadius: '5px',
+  marginLeft: '12px',
   textAlign: 'left',
+
   '& div': {
     display: 'flex',
     justifyContent: 'space-between',
@@ -165,6 +170,7 @@ export const NameContainer = styled(Box)(({theme}) => ({
 export const ImageContainer = styled(Box)(({theme}) => ({
   width: '10rem',
   overflow: 'hidden',
+
   '& img': {
     borderRadius: '8px',
     width: '100%',
@@ -172,15 +178,7 @@ export const ImageContainer = styled(Box)(({theme}) => ({
   }
 }))
 
-export const PriceBox = styled(Box)(({theme}) => ({
-  display: 'flex',
-  flexDirection: 'row',
-  '&> p': {
-    color: '#93959f'
-  }
-}))
 export const TotalContainer = styled(Box)(({theme}) => ({
   display: 'flex',
   flexDirection: 'column'
-
 }))

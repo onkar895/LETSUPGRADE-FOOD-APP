@@ -4,6 +4,7 @@ import { Right, Left, Navbar, LogoContainer } from "./styles";
 import { Box, Button, Typography } from '@mui/material';
 import FoodVillaLogo from '../../assets/FoodVillaLogo.png'
 import { Link, useNavigate } from 'react-router-dom';
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import { useGlobalContext } from '../../Context/Context';
 import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
 import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
@@ -31,24 +32,21 @@ export const CartHeader = () => {
     return (
 
         account ? (<Navbar>
-            <Left>
+            <Left sx={{ marginLeft: '3rem' }}>
                 <LogoContainer component={Link} to={'/'}><img src={FoodVillaLogo} alt="Logo" /></LogoContainer>
-                <Box><Typography variant='h6' sx={{ fontFamily: "Trebuchet MS", fontWeight: 'bold' }}>Secure Checkout</Typography></Box>
             </Left>
-            <Right>
-                <Box><HelpOutlineOutlinedIcon />&nbsp;&nbsp;<Typography sx={{ fontFamily: "Trebuchet MS", fontWeight: 'bold' }}>Help</Typography></Box>
-                <Box><PersonOutlinedIcon />&nbsp;&nbsp;<Typography sx={{ fontFamily: "Trebuchet MS", fontWeight: 'bold' }}>Profile</Typography></Box>
-                <Button onClick={handleLogout}><PowerSettingsNewRoundedIcon />&nbsp;&nbsp;</Button>
+            <Right sx={{ marginRight: '3rem' }}>
+                <Box onClick={() => navigate('/')}><HomeOutlinedIcon sx={{ color: 'white' }} />&nbsp;&nbsp;<Typography sx={{ fontFamily: "Trebuchet MS", fontWeight: 'bold', color: 'white' }}>Home</Typography></Box>
+                <Box><PersonOutlinedIcon sx={{ color: 'white' }} />&nbsp;&nbsp;<Typography sx={{ fontFamily: "Trebuchet MS", fontWeight: 'bold', color: 'white' }}>Profile</Typography></Box>
             </Right>
         </Navbar>) :
             (<Navbar>
-                <Left>
+                <Left sx={{ marginLeft: '3rem' }}>
                     <LogoContainer component={Link} to={'/'}><img src={FoodVillaLogo} alt="Logo" /></LogoContainer>
-                    <Box><Typography variant='h6' sx={{ fontFamily: "Trebuchet MS", fontWeight: 'bold' }}>Login to access cart</Typography></Box>
                 </Left>
-                <Right>
-                    <Box><CatchingPokemonIcon />&nbsp;&nbsp;<Typography sx={{ fontFamily: "Trebuchet MS", fontWeight: 'bold' }}>Help</Typography></Box>
-                    <Box component={Link} to={'/login'}><PermIdentityRoundedIcon />&nbsp;&nbsp;<Typography sx={{ fontFamily: "Trebuchet MS", fontWeight: 'bold' }}>Sign In</Typography></Box>
+                <Right sx={{ marginRight: '3rem', }}>
+                    <Box sx={{ marginBottom: '8px' }}><HomeOutlinedIcon sx={{ color: 'white' }} />&nbsp;&nbsp;<Typography sx={{ fontFamily: "Trebuchet MS", fontWeight: 'bold', color: 'white' }}>Home</Typography></Box>
+                    <Box component={Link} to={'/login'}><PermIdentityRoundedIcon sx={{ color: 'white' }} />&nbsp;&nbsp;<Typography sx={{ fontFamily: "Trebuchet MS", fontWeight: 'bold', color: 'white' }}>Sign In</Typography></Box>
                 </Right>
             </Navbar>)
 

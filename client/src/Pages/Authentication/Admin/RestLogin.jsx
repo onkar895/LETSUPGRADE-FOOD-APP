@@ -70,7 +70,6 @@ export const Restlogin = () => {
                     <Link style={{ textDecoration: 'none', color: 'grey' }} to={'/RestSignUp'}><Typography sx={{ color: 'grey', ":hover": { color: 'black' } }}>Not a User?&nbsp;&nbsp;Register Here</Typography></Link>
                 </div>
 
-
             </FormContainer>
         </>
 

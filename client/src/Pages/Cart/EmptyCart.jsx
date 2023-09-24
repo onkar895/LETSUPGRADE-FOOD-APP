@@ -12,12 +12,11 @@ export const EmptyCart = () => {
     <Main>
       <CartHeader />
       <TopHalf>
-        <Box><img src={EmptyCartImage} alt="Empty Cart" /></Box>
-        <Box><Typography variant='h6'>Your cart is empty</Typography></Box>
-        <Box><Typography>You can go to home page to view more restaurants</Typography></Box>
+        <Box><img src={EmptyCartImage} alt="Empty Cart" style={{ width: '45vw' }} /></Box>
+        <Box><Typography variant='h6' sx={{ fontFamily: "Trebuchet MS", fontWeight: 'bold' }}>Your Cart is Empty</Typography></Box>
       </TopHalf>
       <BottomHalf>
-        <ButtonContainer><Button component={Link} to={'/'} variant='contained' color="primary" sx={{ backgroundColor: "orange" }}>SEE RESTAURANTS NEAR YOU</Button></ButtonContainer>
+        <ButtonContainer><Button component={Link} to={'/'} variant='contained' color="error" sx={{ backgroundColor: "red" }}><Typography sx={{ textTransform: 'capitalize', fontFamily: "Trebuchet MS", fontWeight: 'bold' }}>Explore Restaurants</Typography></Button></ButtonContainer>
       </BottomHalf>
 
 

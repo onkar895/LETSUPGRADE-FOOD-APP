@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import CartHeader from "../Cart/CartHeader"
 import { Box, Typography } from "@mui/material"
 import { OrderContainer, Right, Orders, Bottom, Left } from "./style"
 import { useDispatch, useSelector } from "react-redux"
@@ -25,6 +26,7 @@ export const PreviousOrder = () => {
 
     return (
         <div>
+            <CartHeader />
 
             <Box style={{ marginTop: "2rem", color: 'red', }}><Typography variant='h4' sx={{ fontFamily: "Trebuchet MS", }}>Previous Orders</Typography>
                 {data?.order?.map((item) => (

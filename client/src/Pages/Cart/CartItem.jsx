@@ -4,7 +4,7 @@ import CartHeader from "./CartHeader"
 import { Box, Button, Typography } from "@mui/material";
 import AddBoxRoundedIcon from '@mui/icons-material/AddBoxRounded';
 import RemoveRoundedIcon from '@mui/icons-material/RemoveRounded';
-import { LeftSide, ProductDetails, ImageContainer, NameContainer, CartContainer, PriceBox, LeftMain, TotalContainer } from "./styles";
+import { LeftSide, ProductDetails, ImageContainer, NameContainer, CartContainer, LeftMain, TotalContainer } from "./styles";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { GetCartProducts } from "../../Redux/Store";
@@ -126,8 +126,6 @@ export const CartItem = () => {
     };
 
 
-
-
     return (
 
         <>
@@ -142,25 +140,24 @@ export const CartItem = () => {
 
                                 <ProductDetails>
                                     <NameContainer>
-                                        <Typography>{item?.productName}</Typography>
-                                        <Typography>{item?.restaurantname}</Typography>
-                                        <Typography>{item?.restaurantlandmark}</Typography>
+                                        <Typography sx={{ fontFamily: "Trebuchet MS", fontWeight: 'bold' }}>{item?.restaurantname}</Typography>
+                                        <Typography sx={{ fontFamily: "Trebuchet MS", fontSize: '14px', color: 'grey' }}>{item?.productName}</Typography>
+                                        <Typography sx={{ fontFamily: "Trebuchet MS", fontSize: '14px', color: 'grey' }}>{item?.restaurantlandmark}</Typography>
                                     </NameContainer>
-                                    <PriceBox><CurrencyRupeeIcon sx={{ fontSize: '14px' }} /><Typography>{item.productPrice}</Typography></PriceBox>
+                                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'start', marginRight: '6.5rem' }}><CurrencyRupeeIcon sx={{ fontSize: '14px' }} /><Typography sx={{ fontFamily: "Trebuchet MS", fontWeight: 'bold' }}>{item.productPrice}</Typography></div>
                                 </ProductDetails>
 
                                 <div style={{ display: 'flex', flexDirection: "column" }}>
                                     <Box style={{ display: 'flex', flexDirection: 'row' }}>
-                                        <Button>
+                                        <Button color="warning">
                                             <RemoveRoundedIcon />
                                         </Button>
-                                        <Button>
-
+                                        <Button color="warning">
                                             <AddBoxRoundedIcon />
                                         </Button>
                                     </Box>
 
-                                    <Button variant="contained" sx={{ background: "#D86414" }} onClick={() => RemoveProduct({ productId: item.productId, userId })}>Remove Item</Button>
+                                    <Typography onClick={() => RemoveProduct({ productId: item.productId, userId })} sx={{ fontFamily: "Trebuchet MS", fontWeight: 'bold', color: 'orange', cursor: 'pointer', marginTop: '20px' }}>Remove</Typography>
                                 </div>
 
                             </LeftSide>
@@ -171,8 +168,9 @@ export const CartItem = () => {
 
                 <TotalContainer>
                     <Total data={data} />
-                    <Box><Button variant='contained' onClick={() => Checkout(total, userId)}>Place order</Button>
-                    </Box>                    </TotalContainer>
+                    <Box sx={{ marginTop: '20px', }}><Button variant='contained' color="warning" size="large" onClick={() => Checkout(total, userId)} sx={{ width: '44vw' }}><Typography sx={{ fontFamily: "Trebuchet MS", fontWeight: 'bold', textTransform: 'capitalize' }}>Place order</Typography></Button>
+                    </Box>
+                </TotalContainer>
 
             </CartContainer>
 

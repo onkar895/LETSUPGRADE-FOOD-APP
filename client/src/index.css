@@ -11,7 +11,6 @@
     overflow-x: hidden;
 }
 
-
 .FoodContainer {
     overflow-y: hidden;
     margin: 1rem;
@@ -39,6 +38,7 @@
 }
 
 .header {
+    margin-top: 5rem;
     display: flex;
     flex-direction: column;
     border: none;
@@ -94,10 +94,8 @@
     flex-direction: column;
     text-align: left;
 }
-.imageContainer {
-    width: 70px;
-}
 
 .imageBox {
-    height: 10rem;
+    width: 20vw;
+    height: 25vh;
 }

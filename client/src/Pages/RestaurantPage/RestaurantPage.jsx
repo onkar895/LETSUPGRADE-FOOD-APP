@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import { Box, Typography, Button } from "@mui/material";
+import { Typography, Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import DeliveryDiningIcon from '@mui/icons-material/DeliveryDining';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
@@ -18,16 +19,12 @@ import { AddToCart } from "../../Redux/Actions";
 import { toast } from "react-toastify";
 
 
-
-
-
 export const RestaurantPage = () => {
 
    const userId = localStorage.getItem('userId') //this is user Id
    const id = useParams(); //this is restaurant id
    const dispatch = useDispatch();
    const restId = useParams();
-   const [cartItem, setCartItem] = useState();
 
    const restroId = restId.id
 
@@ -39,7 +36,7 @@ export const RestaurantPage = () => {
    const navigate = useNavigate();
    const data = useSelector((state) => state.restaurants.Singlerestaurant)
 
-   const [toggle, setToggle] = useState(false)
+   const [toggle, setToggle] = useState(true)
 
 
    const AddproductstoCart = async ({ productId, productName, productQuantity, productPrice, productImage, userId, restroId }) => {
@@ -65,15 +62,16 @@ export const RestaurantPage = () => {
          <div className="SingleRest">
             <div className="header">
 
-               <div><Typography variant="h5">{data.name}</Typography></div>
-               <div className="subheader" style={{ display: 'flex' }}><span>{data.categories}</span>&nbsp;<span>{data.origin}</span></div>
-               <div><span>{data.landmark}</span></div>
-               <div className="deliver" style={{ display: "flex", flexDirection: 'row' }}><DeliveryDiningIcon />&nbsp;&nbsp;<span>Based on distance, an additional delivery fee will apply</span></div>
+               <div><Typography variant="h5" sx={{ fontFamily: "Trebuchet MS", fontWeight: 'bold' }}>{data.name}</Typography></div>
+
+               <div className="subheader" style={{ display: 'flex' }}><span><Typography sx={{ color: 'black', fontFamily: "Trebuchet MS", }}>{data.origin}</Typography><Typography sx={{ color: 'black', fontFamily: "Trebuchet MS", fontSize: '14px' }}>{data.categories}</Typography></span>&nbsp;
+               </div>
+               <div><span style={{ fontFamily: "Trebuchet MS", fontWeight: 'bold' }}>{data.landmark}</span></div>
             </div>
 
             <div className="Downheader">
-               <div><AccessTimeIcon />&nbsp;&nbsp;<Typography>42 mins</Typography></div>
-               <div><CurrencyRupeeIcon />&nbsp;&nbsp;<Typography>400 for two</Typography></div>
+               <div><AccessTimeIcon />&nbsp;&nbsp;<Typography sx={{ fontFamily: "Trebuchet MS", fontWeight: 'bold' }}>38 mins</Typography></div>
+               <div><CurrencyRupeeIcon />&nbsp;&nbsp;<Typography sx={{ fontFamily: "Trebuchet MS", fontWeight: 'bold' }}>250 for two</Typography></div>
             </div>
 
 
@@ -82,14 +80,14 @@ export const RestaurantPage = () => {
 
                {(!toggle) ?
 
-                  <BoxContainer style={{ height: "7rem" }}>Recommended&nbsp;({data?.products?.length})<KeyboardArrowDownIcon sx={{ cursor: "pointer" }} onClick={() => setToggle(true)} /></BoxContainer> :
+                  <BoxContainer style={{ height: "7rem", fontFamily: "Trebuchet MS", fontWeight: 'bold' }}>Recommended&nbsp;({data?.products?.length})<KeyboardArrowDownIcon sx={{ cursor: "pointer" }} onClick={() => setToggle(true)} /></BoxContainer> :
                   <BoxDropdown>
-                     <Top style={{ textAlign: 'left' }}>Recommended<KeyboardArrowUpIcon sx={{ cursor: "pointer" }} onClick={() => setToggle(false)} /></Top>
+                     <Top style={{ textAlign: 'left', fontFamily: "Trebuchet MS", fontWeight: 'bold' }}>Recommended<KeyboardArrowUpIcon sx={{ cursor: "pointer" }} onClick={() => setToggle(false)} /></Top>
                      {
 
-                        data.products.map((item) => (
+                        data.products?.map((item) => (
 
-                           <Product key={item._id}>
+                           <Product key={item._id} sx={{ display: 'flex', alignItems: 'center' }}>
 
                               <Left>
                                  <div><SellerHead><RadioButtonCheckedIcon sx={{ fontSize: '14px', color: 'green' }} />&nbsp;<StarIcon sx={{ color: "orange", fontSize: '15px' }} /><Typography fontSize={"small"} color={"orange"}>Bestseller</Typography></SellerHead>
@@ -101,7 +99,7 @@ export const RestaurantPage = () => {
                               <Right>
                                  <ImageContainer>
                                     <div className="imageBox"><img src={item.image} alt=" " /></div>
-                                    <Button variant="contained" onClick={() => AddproductstoCart({
+                                    <Button variant="contained" color="warning" sx={{ margin: '10px 30px 0 0', width: '10vw' }} onClick={() => AddproductstoCart({
                                        productId: item._id, productName: item.name, productQuantity: item.quantity, productPrice:
                                           item.price, productImage: item.image, userId, restroId
                                     })}>Add</Button>
@@ -116,17 +114,6 @@ export const RestaurantPage = () => {
 
 
             </div>
-            <div className="Footer">
-               <div className="Footerhead">
-                  <div className="imageContainer"><img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_120,h_60/fssai_final_edss9i" alt="This is logo" style={{ width: '100%', height: '100%', objectFit: "cover" }} /></div><span>License No. 2345464646</span></div>
-
-               <div className="Subfooter">
-                  <div><Typography>(Outlet:Location)</Typography></div>
-                  <div style={{ display: "flex", flexDirection: "row" }}><LocationOnIcon />&nbsp;&nbsp;Location</div>
-               </div>
-            </div>
-
-
          </div>
       </>
    )
