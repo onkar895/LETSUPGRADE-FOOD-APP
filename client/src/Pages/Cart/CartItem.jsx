@@ -1,21 +1,20 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import CartHeader from "./CartHeader"
+import { ImageContainer, NameContainer, CartContainer, LeftSide, TotalContainer } from "./styles";
 import { Box, Button, Typography } from "@mui/material";
-import AddBoxRoundedIcon from '@mui/icons-material/AddBoxRounded';
-import RemoveRoundedIcon from '@mui/icons-material/RemoveRounded';
-import { LeftSide, ProductDetails, ImageContainer, NameContainer, CartContainer, LeftMain, TotalContainer } from "./styles";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { GetCartProducts } from "../../Redux/Store";
-import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
-import { RemoveFromCart, PlaceOrder, verifyPayment } from "../../Redux/Actions";
-import Total from "./Total";
 import { useGlobalContext } from "../../Context/Context";
 import { toast } from "react-toastify";
 import { buyProducts } from "../../Redux/Actions";
 import { clearCart } from "../../Redux/Store";
 import { useNavigate } from "react-router-dom";
+import { GetCartProducts } from "../../Redux/Store";
+import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
+import { RemoveFromCart, PlaceOrder, verifyPayment } from "../../Redux/Actions";
+import Total from "./Total";
+
 
 
 
@@ -132,39 +131,30 @@ export const CartItem = () => {
             <CartHeader />
             <CartContainer>
 
-                <LeftMain>
+                <Box>
                     {
                         data?.cart?.map((item) => (
                             <LeftSide key={item?.productId}>
                                 <ImageContainer><img src={item.productImage} alt="" /></ImageContainer>
 
-                                <ProductDetails>
+                                <Box>
                                     <NameContainer>
                                         <Typography sx={{ fontFamily: "Trebuchet MS", fontWeight: 'bold' }}>{item?.restaurantname}</Typography>
                                         <Typography sx={{ fontFamily: "Trebuchet MS", fontSize: '14px', color: 'grey' }}>{item?.productName}</Typography>
                                         <Typography sx={{ fontFamily: "Trebuchet MS", fontSize: '14px', color: 'grey' }}>{item?.restaurantlandmark}</Typography>
                                     </NameContainer>
                                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'start', marginRight: '6.5rem' }}><CurrencyRupeeIcon sx={{ fontSize: '14px' }} /><Typography sx={{ fontFamily: "Trebuchet MS", fontWeight: 'bold' }}>{item.productPrice}</Typography></div>
-                                </ProductDetails>
+                                </Box>
 
                                 <div style={{ display: 'flex', flexDirection: "column" }}>
-                                    <Box style={{ display: 'flex', flexDirection: 'row' }}>
-                                        <Button color="warning">
-                                            <RemoveRoundedIcon />
-                                        </Button>
-                                        <Button color="warning">
-                                            <AddBoxRoundedIcon />
-                                        </Button>
-                                    </Box>
-
-                                    <Typography onClick={() => RemoveProduct({ productId: item.productId, userId })} sx={{ fontFamily: "Trebuchet MS", fontWeight: 'bold', color: 'orange', cursor: 'pointer', marginTop: '20px' }}>Remove</Typography>
+                                    <Typography onClick={() => RemoveProduct({ productId: item.productId, userId })} sx={{ fontFamily: "Trebuchet MS", fontWeight: 'bold', color: 'orange', cursor: 'pointer', marginLeft: '6rem' }}>Remove</Typography>
                                 </div>
 
                             </LeftSide>
 
 
                         ))}
-                </LeftMain>
+                </Box>
 
                 <TotalContainer>
                     <Total data={data} />

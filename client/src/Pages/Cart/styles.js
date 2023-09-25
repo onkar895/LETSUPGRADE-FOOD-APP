@@ -113,7 +113,7 @@ export const CartContainer = styled(Box)(({theme}) => ({
 
 }))
 export const LeftSide = styled(Box)(({theme}) => ({
-  width: '100%',
+  width: '44vw',
   display: 'flex',
   flexDirection: 'row',
   textAlign: 'left',
@@ -153,12 +153,7 @@ export const SummaryContainer = styled(Box)(({theme}) => ({
   }
 
 }))
-export const ProductDetails = styled(Box)(({theme}) => ({
 
-}))
-export const LeftMain = styled(Box)(({theme}) => ({
-
-}))
 export const NameContainer = styled(Box)(({theme}) => ({
   '& div p': {
     fontSize: '13px',
